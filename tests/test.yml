@@ -13,5 +13,11 @@
     wordpress_database: wordpress_db
     wordpress_user: wordpress_usr
     wordpress_password: ywIapecJalg6
+  tasks:
+    - name: Ensure firewalld is disabled, it is not a concern of this role
+      service:
+        name: firewalld
+        state: stopped
+        enabled: false
   roles:
     - wordpress
