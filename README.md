@@ -24,7 +24,7 @@ no specific requirements
 
 ### Configuring Apache and Mariadb
 
-The variables for this role are not mandatory, but in the dependent roles (`bertvv.httpd` and `bertvv.mariadb`, some variables have to be set:
+The variables for this role are not mandatory, but in the dependent roles (`bertvv.httpd` and `bertvv.mariadb`), some variables have to be set:
 
 ```Yaml
 httpd_scripting: 'php'
@@ -37,8 +37,8 @@ mariadb_users:
 ```
 
 * PHP scripting should be enabled
-* A database should be created (variable `wordpress_database` should have the same value as `mariadb_databases`
-* A database user with access to the database should be created (`wordpress_user` and `wordpress_password` should have the same values as the respective settings here.
+* A database should be created. Variable `wordpress_database` should have the same value as `mariadb_databases`
+* A database user with access to the database should be created. Variables `wordpress_user` and `wordpress_password` should have the same values as the respective settings here.
 
 ## Dependencies
 
