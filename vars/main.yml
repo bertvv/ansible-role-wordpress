@@ -4,5 +4,3 @@
 wordpress_packages:
   - php-mysql
   - wordpress
-
-wordpress_service:
