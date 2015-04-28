@@ -1,4 +1,6 @@
 # roles/wordpress/defaults/main.yml
 ---
 
-
+wordpress_database: wordpress
+wordpress_user: wordpress
+wordpress_password: wordpress
