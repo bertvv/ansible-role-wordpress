@@ -1,0 +1,7 @@
+# roles/wordpress/vars/main.yml
+---
+
+wordpress_packages:
+  - wordpress
+
+wordpress_service:
