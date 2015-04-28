@@ -1,5 +1,17 @@
 ---
 - hosts: all
   sudo: true
+  vars:
+    httpd_scripting: 'php'
+    mariadb_databases:
+      - wordpress_db
+    mariadb_users:
+      - name: wordpress_usr
+        password: ywIapecJalg6
+        priv: wordpress_db.*:ALL
+
+    wordpress_database: wordpress_db
+    wordpress_user: wordpress_usr
+    wordpress_password: ywIapecJalg6
   roles:
     - wordpress

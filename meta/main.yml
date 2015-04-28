@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Bert Van Vreckem
-  description: PURPOSE
+  description: Installs Wordpress on CentOS/RHEL 7
   company:
   license: BSD
   min_ansible_version: 1.7
@@ -10,6 +10,8 @@ galaxy_info:
     versions:
       - 7
   categories:
-    - system
-dependencies: []
+    - web
+dependencies:
+  - bertvv.httpd
+  - bertvv.mariadb
 
