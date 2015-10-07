@@ -14,13 +14,28 @@ no specific requirements
 
 ## Role Variables
 
-| Variable             | Required | Default     | Comments (type)                         |
-| :---                 | :---     | :---        | :---                                    |
-| `wordpress_database` | no       | 'wordpress' | The name of the database for Wordpress. |
-| `wordpress_user`     | no       | 'wordpress' | The name of the database user.          |
-| `wordpress_password` | no       | 'wordpress' | The password of the database user.      |
+| Variable             | Default     | Comments (type)                                   |
+| :---                 | :---        | :---                                              |
+| `wordpress_database` | 'wordpress' | The name of the database for Wordpress.           |
+| `wordpress_user`     | 'wordpress' | The name of the database user.                    |
+| `wordpress_password` | 'wordpress' | The password of the database user.                |
+| `wordpress_plugins`  | []          | Plugins to be installed. See below. (since 1.1.0) |
+| `wordpress_themes`   | []          | Themes to be installed. See below. (since 1.1.0)  |
 
 **Remark:** it is **very strongly** suggested to change the default password.
+
+To install plugins and themes, you need to specify the name and version. The role will install them from the Wordpress plugin and theme directory. An example:
+
+```yaml
+wordpress_plugins:
+  - name: wp-super-cache
+    version: 1.4.5
+  - name: jetpack
+    version: 3.7.2
+wordpress_themes:
+  - name: xcel
+    version: 1.0.9
+```
 
 ### Configuring Apache and Mariadb
 
@@ -83,7 +98,7 @@ fatal: [testwordpress] => {'msg': "AnsibleError: template error while templating
 FATAL: all hosts have already failed -- aborting
 ```
 
-This is (probably) caused by the secret keys/salts that were automatically generated and by chance contain characters that cannot be processed by Jinja2. Re-run the role and you should be fine...
+This is (probably) caused by the secret keys/salts that were automatically generated and by chance contain characters that have special meaning for Jinja2 and are interpreted as Jinja directives. Re-run the role and you should be fine...
 
 ## Contributing
 

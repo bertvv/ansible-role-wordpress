@@ -13,6 +13,14 @@
     wordpress_database: wordpress_db
     wordpress_user: wordpress_usr
     wordpress_password: ywIapecJalg6
+    wordpress_plugins:
+      - name: wp-super-cache
+        version: 1.4.5
+      - name: jetpack
+        version: 3.7.2
+    wordpress_themes:
+      - name: xcel
+        version: 1.0.9
   tasks:
     - name: Ensure firewalld is disabled, it is not a concern of this role
       service:

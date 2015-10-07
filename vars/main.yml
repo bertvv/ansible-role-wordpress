@@ -4,3 +4,7 @@
 wordpress_packages:
   - php-mysql
   - wordpress
+  - unzip       # for installing plugins
+
+wordpress_plugin_directory: /usr/share/wordpress/wp-content/plugins
+wordpress_theme_directory: /usr/share/wordpress/wp-content/themes
