@@ -45,7 +45,26 @@
   notify: restart httpd
   tags: wordpress
 
-## Plugins
+## Plugins - install without version number
+
+- name: Download plugins
+  get_url:
+    url: "https://downloads.wordpress.org/plugin/{{ item.name }}{{ item.version }}.zip"
+    dest: "/tmp/{{ item.name }}{{ item.version }}.zip"
+  with_items: wordpress_plugins
+  tags: wordpress
+  when: item.version == ""
+
+- name: Unpack plugins
+  unarchive:
+    src: "/tmp/{{ item.name }}{{ item.version }}.zip"
+    dest: "{{ wordpress_plugin_directory }}"
+    copy: false
+  with_items: wordpress_plugins
+  tags: wordpress
+  when: item.version == ""
+  
+## Plugins - with version number
 
 - name: Download plugins
   get_url:
@@ -53,6 +72,7 @@
     dest: "/tmp/{{ item.name }}.{{ item.version }}.zip"
   with_items: wordpress_plugins
   tags: wordpress
+  when: item.version != ""
 
 - name: Unpack plugins
   unarchive:
