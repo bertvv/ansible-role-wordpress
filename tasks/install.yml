@@ -1,0 +1,17 @@
+# roles/wordpress/tasks/install.yml
+# Installs Wordpress from the EPEL repository
+---
+
+- name: Ensure EPEL repository is installed
+  yum:
+    pkg: epel-release
+    state: installed
+  tags: wordpress
+
+- name: Install Wordpress
+  yum:
+    pkg: "{{ item }}"
+    state: installed
+  with_items: wordpress_packages
+  tags: wordpress
+
