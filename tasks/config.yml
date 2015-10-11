@@ -16,7 +16,7 @@
 - name: Download Salts
   get_url:
     url: https://api.wordpress.org/secret-key/1.1/salt/
-    dest: /usr/share/wordpress/wp-salts.php
+    dest: "{{ wordpress_directory }}/wp-salts.php"
     seuser: system_u
     setype: httpd_sys_script_exec_t
     force: no
@@ -25,7 +25,7 @@
 
 - name: Insert PHP start tag in Salts file
   lineinfile:
-    dest: /usr/share/wordpress/wp-salts.php
+    dest: "{{ wordpress_directory }}/wp-salts.php"
     line: '<?php'
     state: present
     insertbefore: BOF
@@ -34,7 +34,7 @@
 
 - name: Insert PHP end tag in Salts file
   lineinfile:
-    dest: /usr/share/wordpress/wp-salts.php
+    dest: "{{ wordpress_directory }}/wp-salts.php"
     line: '?>'
     state: present
     insertafter: EOF
