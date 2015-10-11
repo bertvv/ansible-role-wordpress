@@ -3,13 +3,13 @@
 ---
 
 - name: Apache config file for Wordpress
-  copy:
-    src=wordpress.conf
-    dest=/etc/httpd/conf.d/wordpress.conf
-    owner=root
-    group=root
-    mode=0644
-    setype=httpd_config_t
+  template:
+    src: wordpress.conf.j2
+    dest: /etc/httpd/conf.d/wordpress.conf
+    owner: root
+    group: root
+    mode: 0644
+    setype: httpd_config_t
   notify: restart httpd
   tags: wordpress
 
