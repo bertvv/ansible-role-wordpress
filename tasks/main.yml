@@ -4,21 +4,5 @@
 - include: install.yml
 - include: config.yml
 - include: plugins.yml
-
-## Themes
-
-- name: Download themes
-  get_url:
-    url: "https://downloads.wordpress.org/theme/{{ item.name }}.{{ item.version }}.zip"
-    dest: "/tmp/{{ item.name }}.{{ item.version }}.zip"
-  with_items: wordpress_themes
-  tags: wordpress
-
-- name: Unpack themes
-  unarchive:
-    src: "/tmp/{{ item.name }}.{{ item.version }}.zip"
-    dest: "{{ wordpress_theme_directory }}"
-    copy: false
-  with_items: wordpress_themes
-  tags: wordpress
+- include: themes.yml
 

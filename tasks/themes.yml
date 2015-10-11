@@ -14,6 +14,7 @@
   get_url:
     url: "https://downloads.wordpress.org/theme/{{ item.name }}.{{ item.version }}.zip"
     dest: "/tmp/{{ item.name }}.{{ item.version }}.zip"
+    force: no
   with_items: wordpress_themes
   when: item.version is defined
   tags: wordpress
@@ -22,6 +23,7 @@
   unarchive:
     src: "/tmp/{{ item.name }}.{{ item.version }}.zip"
     dest: "{{ wordpress_theme_directory }}"
+    creates: "{{ wordpress_theme_directory }}/{{ item.name }}"
     copy: false
   with_items: wordpress_themes
   when: item.version is defined
@@ -37,6 +39,7 @@
   get_url:
     url: "https://downloads.wordpress.org/theme/{{ item.name }}.zip"
     dest: "/tmp/{{ item.name }}.zip"
+    force: no
   with_items: wordpress_themes
   when: item.version is not defined
   tags: wordpress
@@ -45,6 +48,7 @@
   unarchive:
     src: "/tmp/{{ item.name }}.zip"
     dest: "{{ wordpress_theme_directory }}"
+    creates: "{{ wordpress_theme_directory }}/{{ item.name }}"
     copy: false
   with_items: wordpress_themes
   when: item.version is not defined
