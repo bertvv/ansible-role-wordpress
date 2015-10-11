@@ -13,9 +13,32 @@
   notify: restart httpd
   tags: wordpress
 
-- name: Get Salts
-  command: curl https://api.wordpress.org/secret-key/1.1/salt/
-  register: wordpress_salt
+- name: Download Salts
+  get_url:
+    url: https://api.wordpress.org/secret-key/1.1/salt/
+    dest: /usr/share/wordpress/wp-salts.php
+    seuser: system_u
+    setype: httpd_sys_script_exec_t
+    force: no
+  notify: restart httpd
+  tags: wordpress
+
+- name: Insert PHP start tag in Salts file
+  lineinfile:
+    dest: /usr/share/wordpress/wp-salts.php
+    line: '<?php'
+    state: present
+    insertbefore: BOF
+  notify: restart httpd
+  tags: wordpress
+
+- name: Insert PHP end tag in Salts file
+  lineinfile:
+    dest: /usr/share/wordpress/wp-salts.php
+    line: '?>'
+    state: present
+    insertafter: EOF
+  notify: restart httpd
   tags: wordpress
 
 - name: Wordpress config file
