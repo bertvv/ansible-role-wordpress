@@ -4,6 +4,14 @@ This file contains al notable changes to the wordpress Ansible role.
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.1.3 - 2015-10-30
+
+This is a bugfix release
+
+### Changes
+
+- Fixed #5 (attempting to log in to the admin page redirects to the login page without error message)
+
 ## 1.1.2 - 2015-10-11
 
 This is a bugfix release
