@@ -1,0 +1,15 @@
+# roles/wordpress/vars/main.yml
+---
+
+wordpress_repository:
+  - epel-release
+
+wordpress_packages:
+  - php-mysql
+  - wordpress
+  - unzip       # for installing plugins
+
+wordpress_directory: /usr/share/wordpress
+
+wordpress_plugin_directory: "{{ wordpress_directory }}/wp-content/plugins"
+wordpress_theme_directory: "{{ wordpress_directory }}/wp-content/themes"

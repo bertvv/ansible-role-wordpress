@@ -15,7 +15,7 @@
     url: "https://downloads.wordpress.org/theme/{{ item.name }}.{{ item.version }}.zip"
     dest: "/tmp/{{ item.name }}.{{ item.version }}.zip"
     force: no
-  with_items: wordpress_themes
+  with_items: "{{ wordpress_themes }}"
   when: item.version is defined
   tags: wordpress
 
@@ -25,7 +25,7 @@
     dest: "{{ wordpress_theme_directory }}"
     creates: "{{ wordpress_theme_directory }}/{{ item.name }}"
     copy: false
-  with_items: wordpress_themes
+  with_items: "{{ wordpress_themes }}"
   when: item.version is defined
   tags: wordpress
 
@@ -40,7 +40,7 @@
     url: "https://downloads.wordpress.org/theme/{{ item.name }}.zip"
     dest: "/tmp/{{ item.name }}.zip"
     force: no
-  with_items: wordpress_themes
+  with_items: "{{ wordpress_themes }}"
   when: item.version is not defined
   tags: wordpress
 
@@ -50,7 +50,7 @@
     dest: "{{ wordpress_theme_directory }}"
     creates: "{{ wordpress_theme_directory }}/{{ item.name }}"
     copy: false
-  with_items: wordpress_themes
+  with_items: "{{ wordpress_themes }}"
   when: item.version is not defined
   tags: wordpress
 

@@ -1,6 +1,7 @@
 # roles/wordpress/tasks/main.yml
 ---
 
+- include_vars: "{{ ansible_distribution }}.yml"
 - include: install.yml
 - include: config.yml
 - include: plugins.yml

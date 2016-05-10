@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  sudo: true
+  become: true
   vars:
     httpd_scripting: 'php'
     mariadb_databases:
