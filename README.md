@@ -67,7 +67,7 @@ See the [test playbook](tests/test.yml).
 
 ## Testing
 
-The `tests` directory contains tests for this role in the form of a Vagrant environment.  The playbook [`test.yml`](tests/test.yml) applies the role to a VM, setting role variables.
+The `tests` directory contains tests for this role in the form of a Vagrant environment with a VM for each supported platform.  The playbook [`test.yml`](tests/test.yml) applies the role to a VM, setting role variables.
 
 The directory `tests/roles/wordpress` should be a symbolic link that points to the root of this project in order to work. To create it, do
 
@@ -76,7 +76,6 @@ $ cd tests/
 $ mkdir roles
 $ ln -frs ../../PROJECT_DIR roles/wordpress
 ```
-You may want to change the base box into one that you like. The current one is based on Box-Cutter's [CentOS Packer template](https://github.com/boxcutter/centos).
 
 Before running the test, install the dependent roles:
 
@@ -85,7 +84,7 @@ $ ansible-galaxy install -p roles/ bertvv.httpd
 $ ansible-galaxy install -p roles/ bertvv.mariadb
 ```
 
-After executing the command `vagrant up`, a Wordpress site should be available at https://127.0.0.1:8080/wordpress
+After executing the command `vagrant up`, a Wordpress site should be available at https://192.168.56.[345]/wordpress
 
 ## Contributing
 
