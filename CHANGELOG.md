@@ -4,6 +4,16 @@ This file contains al notable changes to the wordpress Ansible role.
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.1.4 - 2016-05-10
+
+### Added
+
+- Explicit support for Fedora and CentOS 7, tests for these platforms.
+
+### Changes
+
+- Removed Ansible 2.0 deprecation warnings
+
 ## 1.1.3 - 2015-10-30
 
 This is a bugfix release
