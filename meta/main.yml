@@ -17,4 +17,4 @@ galaxy_info:
     - web
 dependencies:
   - bertvv.httpd
-  - bertvv.mariadb
+  - { role: bertvv.mariadb, when: wordpress_dbhost == 'localhost' }
