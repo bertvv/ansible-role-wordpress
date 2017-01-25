@@ -9,6 +9,15 @@ This file adheres to the guidelines of [http://keepachangelog.com/](http://keepa
 ### Added
 
 - (GH-7) Added variable `mariadb_database_host` (credit [Kwinten Guillaume](https://github.com/kwinteng))
+
+### Changed
+
+- Removed hard-coded paths to config files
+- Set SELinux boolean `httpd_can_network_connect_db` when necessary
+- Check whether Apache is already installed
+
+### Removed
+
 - (GH-7) Removed dependency on `bertvv.mariadb` role
 
 ## 1.1.4 - 2016-05-10
