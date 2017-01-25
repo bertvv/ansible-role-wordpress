@@ -1,5 +1,47 @@
 ---
+
 - hosts: all
   become: true
+  pre_tasks:
+    - name: Ensure firewalld is disabled, it is not a concern of this role
+      service:
+        name: firewalld
+        state: stopped
+        enabled: false
+
+- hosts: db
+  become: true
+  vars:
+    mariadb_bind_address: '0.0.0.0'
+    mariadb_root_password: '&othErEek97FrewlAyd?'
+    mariadb_databases:
+      - wordpress_db
+    mariadb_users:
+      - name: wordpress_usr
+        password: ywIapecJalg6
+        priv: wordpress_db.*:ALL
+        host: '192.168.56.%'
   roles:
+    - bertvv.mariadb
+
+- hosts: '*-wordpress'
+  become: true
+  vars:
+    httpd_scripting: 'php'
+
+    wordpress_database_host: 192.168.56.99
+    wordpress_database: wordpress_db
+    wordpress_user: wordpress_usr
+    wordpress_password: ywIapecJalg6
+    wordpress_plugins:
+      - name: wp-super-cache
+        version: 1.4.5
+      - name: jetpack
+        version: 3.7.2
+      - name: lipsum
+    wordpress_themes:
+      - name: xcel
+        version: 1.0.9
+  roles:
+    - bertvv.httpd
     - wordpress
