@@ -64,29 +64,11 @@ mariadb_users:
 
 ## Example Playbook
 
-See the [test playbook](tests/test.yml).
+See the [test playbook](https://github.com/bertvv/ansible-role-wordpress/blob/vagrant-tests/test.yml).
 
 ## Testing
 
-The `tests` directory contains tests for this role in the form of a Vagrant environment with a VM for each supported platform.  The playbook [`test.yml`](tests/test.yml) applies the role to a VM, setting role variables.
-
-The directory `tests/roles/wordpress` should be a symbolic link that points to the root of this project in order to work. To create it, do
-
-```ShellSession
-$ cd tests/
-$ mkdir roles
-$ ln -frs ../../PROJECT_DIR roles/wordpress
-```
-
-Before running the test, install the dependent roles:
-
-```ShellSession
-$ ansible-galaxy install -p roles/ bertvv.httpd
-$ ansible-galaxy install -p roles/ bertvv.mariadb
-```
-
-After executing the command `vagrant up`, a Wordpress site should be available at https://192.168.56.[345]/wordpress
-
+Test code is kept in a separate branch. See the associated [README](https://github.com/bertvv/ansible-role-wordpress/blob/vagrant-tests/README.md) for more information on how to set this up.
 
 ## Contributing
 
