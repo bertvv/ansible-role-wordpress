@@ -9,5 +9,5 @@
 # Vagrant base boxes (you never know when someone puts one in the repository)
 *.box
 
-# Ignore roles from Galaxy
-tests/roles/*.*
+# Ignore test directory
+*-tests/
