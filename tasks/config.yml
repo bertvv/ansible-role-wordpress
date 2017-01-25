@@ -5,10 +5,10 @@
 - name: Apache config file for Wordpress
   template:
     src: wordpress.conf.j2
-    dest: /etc/httpd/conf.d/wordpress.conf
+    dest: "{{ wordpress_httpd_configuration }}"
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
     setype: httpd_config_t
   notify: restart httpd
   tags: wordpress
@@ -44,7 +44,7 @@
 - name: Wordpress config file
   template:
     src: wp-config.php.j2
-    dest: /etc/wordpress/wp-config.php
+    dest: "{{ wordpress_configuration }}"
     owner: root
     group: apache
     mode: '0640'
