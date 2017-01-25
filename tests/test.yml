@@ -1,15 +1,25 @@
 ---
-- hosts: all
+- hosts: db
   become: true
   vars:
-    httpd_scripting: 'php'
+    mariadb_bind_address: '0.0.0.0'
+    mariadb_root_password: '&othErEek97FrewlAyd?'
     mariadb_databases:
       - wordpress_db
     mariadb_users:
       - name: wordpress_usr
         password: ywIapecJalg6
         priv: wordpress_db.*:ALL
+        host: '192.168.56.%'
+  roles:
+    - bertvv.mariadb
 
+- hosts: '*-wordpress'
+  become: true
+  vars:
+    httpd_scripting: 'php'
+
+    wordpress_database_host: 192.168.56.99
     wordpress_database: wordpress_db
     wordpress_user: wordpress_usr
     wordpress_password: ywIapecJalg6
@@ -29,4 +39,5 @@
         state: stopped
         enabled: false
   roles:
+    - bertvv.httpd
     - wordpress

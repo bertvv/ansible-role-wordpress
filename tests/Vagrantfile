@@ -10,6 +10,12 @@ hosts = [
 ]
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.define 'db' do |node|
+    node.vm.box = 'bertvv/centos72'
+    node.vm.hostname = 'db'
+    node.vm.network :private_network, ip: '192.168.56.99'
+  end
+
   hosts.each do |host|
     host_name = host[:distro] + '-' + ROLE_NAME
 
