@@ -4,7 +4,7 @@
 wordpress_repository: []
 
 wordpress_packages:
-  - php-mysql
+  - php-mysqlnd
   - wordpress
   - unzip       # for installing plugins
 
