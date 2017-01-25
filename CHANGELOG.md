@@ -4,6 +4,13 @@ This file contains al notable changes to the wordpress Ansible role.
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.2.0 - 2017-01-25
+
+### Added
+
+- (GH-7) Added variable `mariadb_database_host` (credit [Kwinten Guillaume](https://github.com/kwinteng))
+- (GH-7) Removed dependency on `bertvv.mariadb` role
+
 ## 1.1.4 - 2016-05-10
 
 ### Added

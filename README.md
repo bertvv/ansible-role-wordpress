@@ -14,13 +14,14 @@ no specific requirements
 
 ## Role Variables
 
-| Variable             | Default     | Comments (type)                                   |
-| :---                 | :---        | :---                                              |
-| `wordpress_database` | 'wordpress' | The name of the database for Wordpress.           |
-| `wordpress_user`     | 'wordpress' | The name of the database user.                    |
-| `wordpress_password` | 'wordpress' | The password of the database user.                |
-| `wordpress_plugins`  | []          | Plugins to be installed. See below. (since 1.1.0) |
-| `wordpress_themes`   | []          | Themes to be installed. See below. (since 1.1.0)  |
+| Variable                  | Default     | Comments (type)                                   |
+| :---                      | :---        | :---                                              |
+| `wordpress_database`      | 'wordpress' | The name of the database for Wordpress.           |
+| `wordpress_database_host` | 'localhost' | The database server.                              |
+| `wordpress_user`          | 'wordpress' | The name of the database user.                    |
+| `wordpress_password`      | 'wordpress' | The password of the database user.                |
+| `wordpress_plugins`       | []          | Plugins to be installed. See below. (since 1.1.0) |
+| `wordpress_themes`        | []          | Themes to be installed. See below. (since 1.1.0)  |
 
 **Remark:** it is **very strongly** suggested to change the default password.
 
@@ -86,18 +87,19 @@ $ ansible-galaxy install -p roles/ bertvv.mariadb
 
 After executing the command `vagrant up`, a Wordpress site should be available at https://192.168.56.[345]/wordpress
 
+
 ## Contributing
 
-Issues, feature requests, ideas are appreciated and can be posted in the Issues section. Pull requests are also very welcome. Preferably, create a topic branch and when submitting, squash your commits into one (with a descriptive message).
+Issues, feature requests, ideas are appreciated and can be posted in the Issues section.
+
+Pull requests are also very welcome. The best way to submit a PR is by first creating a fork of this Github project, then creating a topic branch for the suggested change and pushing that branch to your own fork. Github can then easily create a PR based on that branch.
 
 ## License
 
-BSD
+2-clause BSD license, see [LICENSE.md](LICENSE.md)
 
-## Author Information
+## Contributors
 
-Bert Van Vreckem (bert.vanvreckem@gmail.com)
-
-Contributions by:
-
+- [Bert Van Vreckem](https://github.com/bertvv/) (maintainer)
 - [Jordi Stevens](https://github.com/Xplendit)
+- [Kwinten Guillaume](https://github.com/kwinteng)
