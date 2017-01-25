@@ -43,12 +43,19 @@
 
 - name: Wordpress config file
   template:
-    src=wp-config.php.j2
-    dest=/etc/wordpress/wp-config.php
-    owner=root
-    group=apache
-    mode=0640
-    setype=etc_t
+    src: wp-config.php.j2
+    dest: /etc/wordpress/wp-config.php
+    owner: root
+    group: apache
+    mode: '0640'
+    setype: etc_t
   notify: restart httpd
   tags: wordpress
 
+- name: Allow Apache to access database over the network if necessary
+  seboolean:
+    name: httpd_can_network_connect_db
+    state: on
+    persistent: yes
+  when: ansible_selinux.status == 'enabled' and wordpress_database_host != 'localhost'
+  tags: wordpress
