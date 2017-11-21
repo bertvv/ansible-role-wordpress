@@ -4,8 +4,8 @@
 - include_vars: "{{ ansible_distribution }}.yml"
   tags:
     - wordpress
-- include: install.yml
-- include: config.yml
-- include: plugins.yml
-- include: themes.yml
+- include_tasks: install.yml
+- include_tasks: config.yml
+- include_tasks: plugins.yml
+- include_tasks: themes.yml
 
