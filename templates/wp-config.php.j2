@@ -33,6 +33,21 @@ define('DB_CHARSET', 'utf8');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
+{% if wordpress_force_ssl %}
+
+/** 
+ * Force SSL on Admin pages
+ */
+
+define('FORCE_SSL_ADMIN', true);
+define('FORCE_SSL_LOGIN', true);
+
+/** Fix for redirect loop occuring if WordPress is behind a loadbalancer or cache. */
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
+  $_SERVER['HTTPS'] = 'on';
+
+{% endif %}
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *

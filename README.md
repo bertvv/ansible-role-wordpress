@@ -22,6 +22,7 @@ no specific requirements
 | `wordpress_password`      | 'wordpress' | The password of the database user.                |
 | `wordpress_plugins`       | []          | Plugins to be installed. See below. (since 1.1.0) |
 | `wordpress_themes`        | []          | Themes to be installed. See below. (since 1.1.0)  |
+| `wordpress_force_ssl`     | false       | Forces HTTPS on admin pages.                      |
 
 **Remark:** it is **very strongly** suggested to change the default password.
 
