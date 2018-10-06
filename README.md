@@ -46,7 +46,7 @@ The variables for this role are not mandatory, but in the dependent roles (`bert
 ```Yaml
 httpd_scripting: 'php'
 mariadb_databases:
-  - wordpress_db
+  - name: wordpress_db
 mariadb_users:
   - name: wordpress_usr
     password: ywIapecJalg6
