@@ -13,34 +13,6 @@
   notify: restart httpd
   tags: wordpress
 
-- name: Download Salts
-  get_url:
-    url: https://api.wordpress.org/secret-key/1.1/salt/
-    dest: "{{ wordpress_directory }}/wp-salts.php"
-    seuser: system_u
-    setype: httpd_sys_script_exec_t
-    force: no
-  notify: restart httpd
-  tags: wordpress
-
-- name: Insert PHP start tag in Salts file
-  lineinfile:
-    dest: "{{ wordpress_directory }}/wp-salts.php"
-    line: '<?php'
-    state: present
-    insertbefore: BOF
-  notify: restart httpd
-  tags: wordpress
-
-- name: Insert PHP end tag in Salts file
-  lineinfile:
-    dest: "{{ wordpress_directory }}/wp-salts.php"
-    line: '?>'
-    state: present
-    insertafter: EOF
-  notify: restart httpd
-  tags: wordpress
-
 - name: Wordpress config file
   template:
     src: wp-config.php.j2
@@ -55,7 +27,7 @@
 - name: Allow Apache to access database over the network if necessary
   seboolean:
     name: httpd_can_network_connect_db
-    state: on
-    persistent: yes
+    state: true
+    persistent: true
   when: ansible_selinux.status == 'enabled' and wordpress_database_host != 'localhost'
   tags: wordpress
