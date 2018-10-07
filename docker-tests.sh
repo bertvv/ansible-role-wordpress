@@ -40,7 +40,8 @@ readonly yellow='\e[0;33m'
 
 # Test environment
 readonly container_id="$(mktemp)"
-readonly role_dir='/etc/ansible/roles/role_under_test'
+readonly ansible_home='/etc/ansible'
+readonly role_dir="${ansible_home}/roles/role_under_test"
 readonly test_playbook="${role_dir}/docker-tests/test.yml"
 
 readonly docker_image="bertvv/ansible-testing"
@@ -49,12 +50,21 @@ readonly image_tag="${docker_image}:${DISTRIBUTION}_${VERSION}"
 # Distribution specific settings
 init="/sbin/init"
 run_opts=("--privileged")
+
+# Database settings:
+wordpress_database=wordpress_db
+wordpress_user=wordpress_usr
+wordpress_password=ywIapecJalg6
+
 #}}}
 
 main() {
   configure_environment
 
+  setup_database
+
   start_container
+  install_dependencies bertvv.httpd
 
   run_syntax_check
   run_test_playbook
@@ -101,6 +111,37 @@ configure_environment() {
       warn "Warning: no run options added for ${DISTRIBUTION} ${VERSION}"
       ;;
   esac
+}
+
+install_role() {
+  local role_name="${1}"
+  log "Installing role: ${role_name}"
+  exec_container \
+    ansible-galaxy install --roles-path "${ansible_home}/roles/" "${role_name}"
+}
+
+# Usage: install_dependencies ROLE...
+install_dependencies() {
+  while [ "$#" -ne '0' ]; do
+    install_role "${1}"
+    shift
+  done
+}
+
+# Usage: setup_database
+# Starts a mariadb container with database/username/password that can be used
+# by the wordpress role
+setup_database() {
+  log "Setting up database"
+  set -x
+  docker run --name db  \
+    --detach \
+    --env="MYSQL_RANDOM_ROOT_PASSWORD=yes" \
+    --env="MYSQL_DATABASE=${wordpress_database}" \
+    --env="MYSQL_USER=${wordpress_user}" \
+    --env="MYSQL_PASSWORD=${wordpress_password}" \
+    "mariadb:10.3"
+  set +x
 }
 
 # Usage: build_container
