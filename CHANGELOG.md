@@ -4,6 +4,18 @@ This file contains al notable changes to the wordpress Ansible role.
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.3.0 - 2018-10-XX
+
+### Added
+
+- (GH-9) Variable `wordpress_force_ssl` (defaults to false) that, when enabled, defines FORCE_SSL_ADMIN and FORCE_SSL_LOGIN in wp-config.php in order to force https on admin pages. (credit: [Lander Van den Bulcke](https://github.com/landervdb))
+
+### Changed
+
+- (GH-11) Fix error in the documentation (credit: [Glenn De Smedt](https://github.com/GlennDeSmedt))
+- Fixed Ansible deprecation warnings and yamllint warnings
+- (GH-10) Installation of a salt is now idempotent
+
 ## 1.2.0 - 2017-01-25
 
 ### Added
