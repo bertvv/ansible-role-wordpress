@@ -21,4 +21,3 @@
     state: installed
   with_items: "{{ wordpress_packages }}"
   tags: wordpress
-
