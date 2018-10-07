@@ -1,11 +1,31 @@
 # roles/wordpress/tasks/main.yml
 ---
 
-- include_vars: "{{ ansible_distribution }}.yml"
-  tags:
-    - wordpress
-- include_tasks: install.yml
-- include_tasks: config.yml
-- include_tasks: plugins.yml
-- include_tasks: themes.yml
+- name: Include distribution-specific variables
+  include_vars: "{{ ansible_distribution }}.yml"
+  tags: wordpress
 
+- name: Install Wordpress
+  include_tasks: install.yml
+  tags: wordpress
+
+- name: Check if salt is already present
+  stat:
+    path: "{{ wordpress_directory }}/wp-salts.php"
+  register: salt_file
+
+- name: Install new salt
+  include_tasks: salt.yml
+  when: not salt_file.stat.exists
+
+- name: Configure wordpress
+  include_tasks: config.yml
+  tags: wordpress
+
+- name: Install plugins
+  include_tasks: plugins.yml
+  tags: wordpress
+
+- name: Install themes
+  include_tasks: themes.yml
+  tags: wordpress
