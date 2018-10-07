@@ -1,5 +1,7 @@
 # Ansible role `wordpress`
 
+[![Build Status](https://travis-ci.org/bertvv/ansible-role-wordpress.svg?branch=master)](https://travis-ci.org/bertvv/ansible-role-wordpress)
+
 An Ansible role for installing Wordpress. Specifically, the responsibilities of this role are to:
 
 - install the EPEL repository and Wordpress dependencies
