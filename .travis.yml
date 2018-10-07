@@ -15,12 +15,12 @@ services:
   - docker
 
 before_install:
-    # Install latest Git
+  # Install latest Git
   - sudo apt-get update
   - sudo apt-get install --only-upgrade git
-    # Allow fetching other branches than master
+  # Allow fetching other branches than master
   - git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
-    # Fetch the branch with test code
+  # Fetch the branch with test code
   - git fetch origin docker-tests
   - git worktree add docker-tests origin/docker-tests
 
@@ -29,7 +29,7 @@ script:
   - ./docker-tests/docker-tests.sh
 
   # Run functional tests on the container
-  - SUT_IP=172.17.0.2 ./docker-tests/functional-tests.sh
+  - SUT_IP=172.17.0.3 ./docker-tests/functional-tests.sh
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
