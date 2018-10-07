@@ -10,9 +10,13 @@ An Ansible role for installing Wordpress. Specifically, the responsibilities of 
 - fetch security keys and salts
 - generate `wp-config.php`
 
+## Dependencies
+
+- [bertvv.httpd](https://galaxy.ansible.com/list#/roles/3047)
+
 ## Requirements
 
-no specific requirements
+You need to have a database server set up with a database, user, and password that can is available to this Wordpress instance. You can set it up on the same machine (e.g. using another Ansible role like [bertvv.mariadb](https://github.com/bertvv/ansible-role-mariadb)), but it can also be an existing database on another host.
 
 ## Role Variables
 
@@ -41,29 +45,6 @@ wordpress_themes:
   - name: xcel
     version: 1.0.9
 ```
-
-### Configuring Apache and Mariadb
-
-The variables for this role are not mandatory, but in the dependent roles (`bertvv.httpd` and `bertvv.mariadb`), some variables have to be set:
-
-```Yaml
-httpd_scripting: 'php'
-mariadb_databases:
-  - name: wordpress_db
-mariadb_users:
-  - name: wordpress_usr
-    password: ywIapecJalg6
-    priv: wordpress_db.*:ALL
-```
-
-* PHP scripting should be enabled
-* A database should be created. Variable `wordpress_database` should have the same value as `mariadb_databases`
-* A database user with access to the database should be created. Variables `wordpress_user` and `wordpress_password` should have the same values as the respective settings here.
-
-## Dependencies
-
-- [bertvv.httpd](https://galaxy.ansible.com/list#/roles/3047)
-- [bertvv.mariadb](https://galaxy.ansible.com/list#/roles/3518)
 
 ## Example Playbook
 
