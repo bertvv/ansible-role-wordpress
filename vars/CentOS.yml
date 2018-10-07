@@ -5,6 +5,8 @@ wordpress_repository:
   - epel-release
 
 wordpress_packages:
+  - php
+  - php-xml
   - php-mysql
   - wordpress
   - unzip       # for installing plugins

@@ -4,9 +4,12 @@
 wordpress_repository: []
 
 wordpress_packages:
+  - python3-libsemanage  # for the seboolean task.
+  - php
+  - php-xml
   - php-mysqlnd
   - wordpress
-  - unzip       # for installing plugins
+  - unzip                # for installing plugins
 
 wordpress_directory: '/usr/share/wordpress'
 
