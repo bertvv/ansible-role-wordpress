@@ -48,11 +48,15 @@ wordpress_themes:
 
 ## Example Playbook
 
-See the [test playbook](https://github.com/bertvv/ansible-role-wordpress/blob/vagrant-tests/test.yml).
+See the test playbooks in either the [Vagrant](https://github.com/bertvv/ansible-role-wordpress/blob/vagrant-tests/test.yml) or [Docker](https://github.com/bertvv/ansible-role-wordpress/blob/docker-tests/test.yml) test environment. See the section Testing for details.
+
 
 ## Testing
 
-Test code is kept in a separate branch. See the associated [README](https://github.com/bertvv/ansible-role-wordpress/blob/vagrant-tests/README.md) for more information on how to set this up.
+There are two types of test environments available. One powered by Vagrant, another by Docker. The latter is suitable for running automated tests on Travis-CI. Test code is kept in separate orphan branches. For details of how to set up these test environments on your own machine, see the README files in the respective branches:
+
+- Vagrant: [vagrant-tests](https://github.com/bertvv/ansible-role-wordpress/tree/vagrant-tests)
+- Docker: [docker-tests](https://github.com/bertvv/ansible-role-wordpress/tree/docker-tests)
 
 ## Contributing
 
