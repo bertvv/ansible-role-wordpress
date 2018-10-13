@@ -4,7 +4,15 @@ This file contains al notable changes to the wordpress Ansible role.
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
-## 1.3.0 - 2018-10-XX
+## 1.4.0 - 2018-10-13
+
+### Added
+
+- Variable `wordpress_allow_file_mods`, to enable installation of additional themes and plugins through the Wordpress admin dashboard
+- Variable `wordpress_automatic_updates` to enable automatic updates
+- Variable `wordpress_debug` to enable debug mode
+
+## 1.3.0 - 2018-10-07
 
 ### Added
 
