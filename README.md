@@ -20,17 +20,22 @@ You need to have a database server set up with a database, user, and password th
 
 ## Role Variables
 
-| Variable                  | Default     | Comments (type)                                   |
-| :---                      | :---        | :---                                              |
-| `wordpress_database`      | 'wordpress' | The name of the database for Wordpress.           |
-| `wordpress_database_host` | 'localhost' | The database server.                              |
-| `wordpress_user`          | 'wordpress' | The name of the database user.                    |
-| `wordpress_password`      | 'wordpress' | The password of the database user.                |
-| `wordpress_plugins`       | []          | Plugins to be installed. See below. (since 1.1.0) |
-| `wordpress_themes`        | []          | Themes to be installed. See below. (since 1.1.0)  |
-| `wordpress_force_ssl`     | false       | Forces HTTPS on admin pages.                      |
+| Variable                      | Default     | Comments (type)                                                                                    |
+| :---                          | :---        | :---                                                                                               |
+| `wordpress_allow_file_mods`   | false       | When `true`, installation of additional themes and plugins through the admin dashboard is allowed |
+| `wordpress_automatic_updates` | false       | When `true`, automatic updates are enabled                                                         |
+| `wordpress_database_host`     | 'localhost' | The database server.                                                                               |
+| `wordpress_database`          | 'wordpress' | The name of the database for Wordpress.                                                            |
+| `wordpress_debug`             | false       | When `true`, enables debug mode                                                                    |
+| `wordpress_force_ssl`         | false       | When `true`, forces HTTPS on admin pages.                                                          |
+| `wordpress_password`          | 'wordpress' | The password of the database user.                                                                 |
+| `wordpress_plugins`           | []          | Plugins to be installed. See below.                                                                |
+| `wordpress_themes`            | []          | Themes to be installed. See below.                                                                 |
+| `wordpress_user`              | 'wordpress' | The name of the database user.                                                                     |
 
 **Remark:** it is **very strongly** suggested to change the default password.
+
+## Plugins and themes
 
 To install plugins and themes (from the Wordpress Plugin and Theme Directory), you need to specify at least the name. Most plugins and themes also have a version, in which case you need to provide it as well. The version number should not be given if the plugins does't have one. An example:
 

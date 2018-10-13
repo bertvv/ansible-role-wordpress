@@ -35,7 +35,7 @@ define('DB_COLLATE', '');
 
 {% if wordpress_force_ssl %}
 
-/** 
+/**
  * Force SSL on Admin pages
  */
 
@@ -73,12 +73,11 @@ $table_prefix  = 'wp_';
  * See http://make.wordpress.org/core/2013/10/25/the-definitive-guide-to-disabling-auto-updates-in-wordpress-3-7
  */
 
-/* Disable all file change, as RPM base installation are read-only */
-define('DISALLOW_FILE_MODS', true);
+/* When true, don't allow installation of additional themes and plugins from the admin console */
+define('DISALLOW_FILE_MODS', {{ not wordpress_allow_file_mods }});
 
-/* Disable automatic updater, in case you want to allow
-   above FILE_MODS for plugins, themes, ... */
-define('AUTOMATIC_UPDATER_DISABLED', true);
+/* When true, don't perform automatic updates */
+define('AUTOMATIC_UPDATER_DISABLED', {{ not wordpress_automatic_updates }});
 
 /* Core update is always disabled, WP_AUTO_UPDATE_CORE value is ignore */
 
@@ -89,14 +88,15 @@ define('AUTOMATIC_UPDATER_DISABLED', true);
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', {{ wordpress_debug }});
 
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
-	define('ABSPATH', '{{ wordpress_directory }}');
+  define('ABSPATH', '{{ wordpress_directory }}');
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
 
+// vim: ft=php

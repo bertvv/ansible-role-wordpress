@@ -10,3 +10,6 @@ wordpress_plugins: []
 wordpress_themes: []
 
 wordpress_force_ssl: false
+wordpress_allow_file_mods: true
+wordpress_automatic_updates: true
+wordpress_debug: false
