@@ -3,9 +3,8 @@
 
 - name: Ensure repository is installed
   package:
-    name: "{{ item }}"
-    state: installed
-  with_items: "{{ wordpress_repository }}"
+    name: "{{ wordpress_repository }}"
+    state: present
   tags: wordpress
 
 - name: Check whether Apache is already installed
@@ -17,7 +16,6 @@
 
 - name: Install Wordpress
   package:
-    name: "{{ item }}"
-    state: installed
-  with_items: "{{ wordpress_packages }}"
+    name: "{{ wordpress_packages }}"
+    state: present
   tags: wordpress
