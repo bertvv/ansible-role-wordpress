@@ -4,6 +4,14 @@ This file contains al notable changes to the wordpress Ansible role.
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.4.1 - 2021-08-30
+
+### Changed
+
+- Add support for EL 8 (Credit: [Joran Goossens](https://github.com/jorangooss99))
+- Update search rules for distro-specific variables so a wider range of distros (like AlmaLinux, and probably also Rocky Linux) is also supported
+- Replace with_items with loop (Credit: [Varun Priolkar](https://github.com/arhue))
+
 ## 1.4.0 - 2018-10-13
 
 ### Added
