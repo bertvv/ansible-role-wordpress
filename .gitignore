@@ -11,3 +11,6 @@
 
 # Ignore test directory
 *-tests/
+
+# Ignore Ansible fact cache
+.cache/
