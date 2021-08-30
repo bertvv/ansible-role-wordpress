@@ -24,28 +24,28 @@
   get_url:
     url: https://wordpress.org/wordpress-5.0.8.tar.gz
     dest: "{{ wordpress_install_directory }}"
-  
+
 - name: Unzipping wordpress
   unarchive:
     src: "{{ wordpress_install_directory }}/wordpress-5.0.8.tar.gz"
     dest: "{{ wordpress_install_directory }}"
-    remote_src: yes
+    remote_src: true
 
 - name: Remove wordpress.tar.gz file
   file:
     path: "{{ wordpress_install_directory }}/wordpress-5.0.8.tar.gz"
     state: absent
 
-- name: Setting ownership 
+- name: Setting ownership
   file:
     path: "{{ wordpress_directory }}"
     owner: apache
     group: apache
     state: directory
-    recurse: yes
+    recurse: true
     mode: '0775'
 
-- name: Setting SELinux context    
+- name: Setting SELinux context
   community.general.sefcontext:
     target: "{{ wordpress_directory }}"
     setype: httpd_sys_rw_content_t

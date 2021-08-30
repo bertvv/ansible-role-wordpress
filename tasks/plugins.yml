@@ -14,7 +14,7 @@
   get_url:
     url: "https://downloads.wordpress.org/plugin/{{ item.name }}.{{ item.version }}.zip"
     dest: "/tmp/{{ item.name }}.{{ item.version }}.zip"
-    force: no
+    force: false
   with_items: "{{ wordpress_plugins }}"
   when: item.version is defined
   tags: wordpress
@@ -39,7 +39,7 @@
   get_url:
     url: "https://downloads.wordpress.org/plugin/{{ item.name }}.zip"
     dest: "/tmp/{{ item.name }}.zip"
-    force: no
+    force: false
   with_items: "{{ wordpress_plugins }}"
   when: item.version is not defined
   tags: wordpress
@@ -53,4 +53,3 @@
   with_items: "{{ wordpress_plugins }}"
   when: item.version is not defined
   tags: wordpress
-

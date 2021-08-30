@@ -29,5 +29,7 @@
     name: httpd_can_network_connect_db
     state: true
     persistent: true
-  when: ansible_selinux.status == 'enabled' and wordpress_database_host != 'localhost'
+  when: >
+    ansible_selinux.status == 'enabled' and
+    wordpress_database_host != 'localhost'
   tags: wordpress
