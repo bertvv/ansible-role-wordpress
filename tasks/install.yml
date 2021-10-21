@@ -50,3 +50,5 @@
     target: "{{ wordpress_directory }}"
     setype: httpd_sys_rw_content_t
     state: present
+  when: ansible_selinux.status == 'enabled' 
+
