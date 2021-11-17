@@ -24,6 +24,7 @@ You need to have a database server set up with a database, user, and password th
 | :---                          | :---        | :---                                                                                               |
 | `wordpress_allow_file_mods`   | false       | When `true`, installation of additional themes and plugins through the admin dashboard is allowed |
 | `wordpress_automatic_updates` | false       | When `true`, automatic updates are enabled                                                         |
+| `wordpress_version`           | '5.0.8'     | The wordpress version to download.                                                                               |
 | `wordpress_database_host`     | 'localhost' | The database server.                                                                               |
 | `wordpress_database`          | 'wordpress' | The name of the database for Wordpress.                                                            |
 | `wordpress_debug`             | false       | When `true`, enables debug mode                                                                    |

@@ -22,18 +22,18 @@
 
 - name: Download Wordpress
   get_url:
-    url: https://wordpress.org/wordpress-5.0.8.tar.gz
+    url: https://wordpress.org/wordpress-{{ wordpress_version }}.tar.gz
     dest: "{{ wordpress_install_directory }}"
 
 - name: Unzipping wordpress
   unarchive:
-    src: "{{ wordpress_install_directory }}/wordpress-5.0.8.tar.gz"
+    src: "{{ wordpress_install_directory }}/wordpress-{{ wordpress_version }}.tar.gz"
     dest: "{{ wordpress_install_directory }}"
     remote_src: true
 
 - name: Remove wordpress.tar.gz file
   file:
-    path: "{{ wordpress_install_directory }}/wordpress-5.0.8.tar.gz"
+    path: "{{ wordpress_install_directory }}/wordpress-{{ wordpress_version }}.tar.gz"
     state: absent
 
 - name: Setting ownership
