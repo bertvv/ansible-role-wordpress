@@ -1,0 +1,11 @@
+
+module my-phpfpm 1.0;
+
+require {
+	type httpd_t;
+	type unconfined_service_t;
+	class unix_stream_socket connectto;
+}
+
+#============= httpd_t ==============
+allow httpd_t unconfined_service_t:unix_stream_socket connectto;

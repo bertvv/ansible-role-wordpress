@@ -1,5 +1,7 @@
 ---
 galaxy_info:
+  namespace: bertvv
+  role_name: wordpress
   author: Bert Van Vreckem
   description: >
     Installs Wordpress on a RedHat based distribution (RHEL/CentOS, Fedora)
@@ -10,6 +12,7 @@ galaxy_info:
       versions:
         - 7
         - 8
+        - 9
     - name: Fedora
       versions:
         - 28

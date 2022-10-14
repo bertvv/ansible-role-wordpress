@@ -33,3 +33,10 @@
     ansible_selinux.status == 'enabled' and
     wordpress_database_host != 'localhost'
   tags: wordpress
+
+- name: Copy SELinux policy file to allow `php-fpm` to connect to mysql.socket
+  copy:
+    src: my-phpfpm.pp
+    dest: /root
+  notify: Apply SELinux policy
+  tags: wordpress

@@ -5,8 +5,15 @@
   service:
     name: wordpress
     state: restarted
+  tags: wordpress
 
 - name: Restart firewalld
   service:
     name: firewalld
     state: restarted
+  tags: wordpress
+
+#- name: 
+- name: Apply SELinux policy
+  command: semodule --priority=300 --install=/root/my-phpfpm.pp
+  tags: wordpress
