@@ -1,6 +1,7 @@
 # roles/wordpress/defaults/main.yml
 ---
 
+wordpress_version: '6.0.2'
 wordpress_database_host: localhost
 wordpress_database: wordpress
 wordpress_user: wordpress
