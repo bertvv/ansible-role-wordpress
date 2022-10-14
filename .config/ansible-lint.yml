@@ -1,0 +1,4 @@
+---
+skip_list:  # or 'warn_list' to consider them as warnings
+  - experimental  # all rules tagged as experimental
+  - fqcn[action-core]  # Use FQCN for builtin actions.
