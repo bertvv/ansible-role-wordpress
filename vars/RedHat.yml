@@ -1,17 +1,14 @@
 # roles/wordpress/vars/main.yml
 ---
 
-wordpress_repository:
-  - epel-release
-
 wordpress_packages:
   - php
   - php-xml
   - php-mysqlnd
   - unzip       # for installing plugins
 
-wordpress_install_directory: '/var/www'
-wordpress_directory: '/var/www/wordpress'
+wordpress_install_directory: '/usr/share'
+wordpress_directory: '/usr/share/wordpress'
 
 wordpress_httpd_configuration: '/etc/httpd/conf.d/wordpress.conf'
 wordpress_configuration: "{{ wordpress_directory }}/wp-config.php"
