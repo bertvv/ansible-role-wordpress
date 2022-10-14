@@ -4,15 +4,15 @@
 
 An Ansible role for installing Wordpress. Specifically, the responsibilities of this role are to:
 
-- install the EPEL repository and Wordpress dependencies
-- install Wordpress
-- set up the database and configure Apache
+- install Wordpress dependencies
+- install Wordpress by downloading a tarball from wordpress.org
+- Configure the database settings and Apache
 - fetch security keys and salts
 - generate `wp-config.php`
 
 ## Dependencies
 
-- [bertvv.httpd](https://galaxy.ansible.com/list#/roles/3047)
+- [bertvv.httpd](https://galaxy.ansible.com/bertvv/httpd)
 
 ## Requirements
 
@@ -20,18 +20,19 @@ You need to have a database server set up with a database, user, and password th
 
 ## Role Variables
 
-| Variable                      | Default     | Comments (type)                                                                                    |
-| :---                          | :---        | :---                                                                                               |
+| Variable                      | Default     | Comments (type)                                                                                   |
+| :---------------------------- | :---------- | :------------------------------------------------------------------------------------------------ |
 | `wordpress_allow_file_mods`   | false       | When `true`, installation of additional themes and plugins through the admin dashboard is allowed |
-| `wordpress_automatic_updates` | false       | When `true`, automatic updates are enabled                                                         |
-| `wordpress_database_host`     | 'localhost' | The database server.                                                                               |
-| `wordpress_database`          | 'wordpress' | The name of the database for Wordpress.                                                            |
-| `wordpress_debug`             | false       | When `true`, enables debug mode                                                                    |
-| `wordpress_force_ssl`         | false       | When `true`, forces HTTPS on admin pages.                                                          |
-| `wordpress_password`          | 'wordpress' | The password of the database user.                                                                 |
-| `wordpress_plugins`           | []          | Plugins to be installed. See below.                                                                |
-| `wordpress_themes`            | []          | Themes to be installed. See below.                                                                 |
-| `wordpress_user`              | 'wordpress' | The name of the database user.                                                                     |
+| `wordpress_automatic_updates` | false       | When `true`, automatic updates are enabled                                                        |
+| `wordpress_database_host`     | 'localhost' | The database server.                                                                              |
+| `wordpress_database`          | 'wordpress' | The name of the database for Wordpress.                                                           |
+| `wordpress_debug`             | false       | When `true`, enables debug mode                                                                   |
+| `wordpress_force_ssl`         | false       | When `true`, forces HTTPS on admin pages.                                                         |
+| `wordpress_password`          | 'wordpress' | The password of the database user.                                                                |
+| `wordpress_plugins`           | []          | Plugins to be installed. See below.                                                               |
+| `wordpress_themes`            | []          | Themes to be installed. See below.                                                                |
+| `wordpress_user`              | 'wordpress' | The name of the database user.                                                                    |
+| `wordpress_version`           | '6.0.2'     | The version of Wordpress to be installed                                                          |
 
 **Remark:** it is **very strongly** suggested to change the default password.
 
@@ -63,12 +64,6 @@ There are two types of test environments available. One powered by Vagrant, anot
 - Vagrant: [vagrant-tests](https://github.com/bertvv/ansible-role-wordpress/tree/vagrant-tests)
 - Docker: [docker-tests](https://github.com/bertvv/ansible-role-wordpress/tree/docker-tests)
 
-## Contributing
-
-Issues, feature requests, ideas are appreciated and can be posted in the Issues section.
-
-Pull requests are also very welcome. The best way to submit a PR is by first creating a fork of this Github project, then creating a topic branch for the suggested change and pushing that branch to your own fork. Github can then easily create a PR based on that branch.
-
 ## License
 
 2-clause BSD license, see [LICENSE.md](LICENSE.md)
@@ -76,5 +71,6 @@ Pull requests are also very welcome. The best way to submit a PR is by first cre
 ## Contributors
 
 - [Bert Van Vreckem](https://github.com/bertvv/) (maintainer)
+- [Joran Goossens](https://github.com/jorangooss99)
 - [Jordi Stevens](https://github.com/Xplendit)
 - [Kwinten Guillaume](https://github.com/kwinteng)

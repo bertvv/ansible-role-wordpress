@@ -4,6 +4,19 @@ This file contains al notable changes to the wordpress Ansible role.
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.5.0 - 2022-10-14
+
+### Added
+
+- `wordpress_version`, the version of Wordpress to be installed
+
+### Changed
+
+- Fixed many code style and idempotence problems in contributed code
+- Fixed ansible-lint warnings
+- Simplify Apache config (drop Apache 2.2 config, which would never be installed on the supported platforms)
+- Fix for SELinux not allowing php-fpm to connect to mysql.socket
+
 ## 1.4.2 - 2022-10-14
 
 ### Changed
