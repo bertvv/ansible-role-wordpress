@@ -4,6 +4,12 @@ This file contains al notable changes to the wordpress Ansible role.
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.4.2 - 2022-10-14
+
+### Changed
+
+- Add support for EL 9 by refactoring distro-specific vars files
+
 ## 1.4.1 - 2021-08-30
 
 ### Changed
