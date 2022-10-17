@@ -4,6 +4,13 @@ This file contains al notable changes to the wordpress Ansible role.
 
 This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.5.1 - 202210-17
+
+### Changed
+
+- Compile the SELinux module on the VM itself instead of trying to install the compiled module. This should prevent version mismatches when installing the compiled module on the target system.
+- Add the tag `wordpress` to tasks that still didn't have one
+
 ## 1.5.0 - 2022-10-14
 
 ### Added
