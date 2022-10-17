@@ -20,10 +20,12 @@
   stat:
     path: "{{ wordpress_directory }}/wp-salts.php"
   register: salt_file
+  tags: wordpress
 
 - name: Install new salt
   include_tasks: salt.yml
   when: not salt_file.stat.exists
+  tags: wordpress
 
 - name: Configure wordpress
   include_tasks: config.yml
