@@ -13,7 +13,10 @@
     state: restarted
   tags: wordpress
 
-#- name: 
-- name: Apply SELinux policy
-  command: semodule --priority=300 --install=/root/my-phpfpm.pp
+- name: Compile and apply SELinux policy
+  shell: >
+    checkmodule -M -m -o /root/my-phpfpm.mod /root/my-phpfpm.te;
+    semodule_package -o /root/my-phpfpm.pp -m /root/my-phpfpm.mod;
+    semodule --priority=300 --install=/root/my-phpfpm.pp;
+    rm /root/my-phpfpm.{mod,pp}
   tags: wordpress

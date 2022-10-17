@@ -36,7 +36,7 @@
 
 - name: Copy SELinux policy file to allow `php-fpm` to connect to mysql.socket
   copy:
-    src: my-phpfpm.pp
+    src: my-phpfpm.te
     dest: /root
-  notify: Apply SELinux policy
+  notify: Compile and apply SELinux policy
   tags: wordpress
